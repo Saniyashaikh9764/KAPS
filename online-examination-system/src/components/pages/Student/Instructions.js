@@ -6,10 +6,10 @@ function Instructions() {
     <div style={{paddingTop:"20px",paddingBottom:"20px" ,marginLeft:"100px",marginRight:"100px"}}>
             <div class="card shadow-lg p-3 mb-5 bg-white rounded">
             <div class="card-body">
-                <h1 class="card-title" style={{textAlign:'center'}}>Instructions</h1>
+                <h1 class="card-title" style={{textAlign:'center',fontWeight: 900}}>Instructions</h1>
                 <p class="card-text"style={{textAlign:'center'}}>Please read all the Instructions carefully before starting test</p>
             </div>
-            <ol class="list-group list-group-flush" style={{fontWeight: 900,color:'#ff4d4d'}}>
+            <ol class="list-group list-group-flush" style={{fontWeight: 600,color:'black'}}>
             <li class="list-group-item">The examination will comprise of Objective type Multiple Choice Questions (MCQs) </li>
             <li class="list-group-item">All questions are compulsory and each carries One mark. </li>
             <li class="list-group-item" style={{textDecoration:'underline',textDecorationColor:'black'}}>There will be NO NEGATIVE MARKING for the wrong answers.</li>

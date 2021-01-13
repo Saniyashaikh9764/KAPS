@@ -17,7 +17,7 @@ export class Adm_Registration extends Component {
         };
     }
    
-    submithandler =  event => {  
+    submithandler = async event => {  
         event.preventDefault() 
         const data2 = {
             "Name" : this.state.name,
@@ -28,7 +28,7 @@ export class Adm_Registration extends Component {
             "NameOrg" : this.state.nameOrg
         }
         
-         axios.post(`http://localhost:5000/adminModel`,data2).then(res => {
+        await axios.post(`http://localhost:5000/adminModel`,data2).then(res => {
          alert(JSON.stringify(res.data.message) )   
         // console.log();
             console.log(res.data);
@@ -84,7 +84,7 @@ export class Adm_Registration extends Component {
                                                     </div>
                                                     <div className="col-md-8">
                                                         <input type="text" name="name" value={this.state.name} className="form-control" placeholder="Type your name here" onChange={this.myChangeHandler} required />
-
+                                                    
                                                     </div>
                                                 </div>
 
@@ -152,13 +152,13 @@ export class Adm_Registration extends Component {
 
                                                     </div>
                                                 </div>
-
+                                                <h5 style={{color:"red",marginLeft:'250px'}}>{this.state.errormessage}</h5>
                                                 <div className="mb-3 row" style={{padding:'3px'}}>
                                                     <div className="col-md-4">
                                                     </div>
                                                     <div className="col-md-8">
                                                         <button className="btn btn-primary" type='submit' id='btnSubmit' onSubmit='addtodb()'>Register</button>
-                                                        {this.state.errormessage}
+                                                       
                                                     </div> 
                                                     
                                                 </div>

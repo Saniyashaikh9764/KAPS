@@ -31,7 +31,7 @@ export class ContactUs extends Component {
             }
         }
         if (nam === "number") {
-            if (val == "" && !Number(val) && val.length != 10) {
+            if (val === "" || !Number(val) || val.length != 10) {
                 err = '*Please enter a valid number';
             }
         }
@@ -116,7 +116,7 @@ export class ContactUs extends Component {
                                                         <label for="number">Phone Number</label>
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <input type="text" name="number" minLength='10' class="form-control" placeholder="So we can reach you" onChange={this.myChangeHandler} required />
+                                                        <input type="text" name="number" minLength='10' maxLength='10'  class="form-control" placeholder="So we can reach you" onChange={this.myChangeHandler} required />
 
                                                     </div>
                                                 </div>

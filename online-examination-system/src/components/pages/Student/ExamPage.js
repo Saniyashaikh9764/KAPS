@@ -40,7 +40,19 @@ function ExamPage(props) {
     //timer
     const time = new Date();
     time.setSeconds(time.getSeconds() + 600); // 10 minutes timer= 10*60=600
+    // setTimeout(()=>{
+    //     let i=0; let total =0;
+    //     for(i;i<selectedAnsArr.length;i++)
+    //     {
+    //        total += selectedAnsArr[i]
+    //     }
+      
+    //     props.history.push({
+    //        pathname: '/results',
+    //        state: { total: total }
+    //      })
 
+    //  },600000)
    
     return (
 

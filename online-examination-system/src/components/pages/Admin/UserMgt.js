@@ -57,7 +57,7 @@ function UserMgt() {
     };
 
 const deleteUser= async id=>{
-    alert(id);
+    alert('deleting :'+id);
     const result = await axios.delete(`http://localhost:5000/studentModel/${id}`);
     loadusers();
 }

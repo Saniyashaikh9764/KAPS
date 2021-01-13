@@ -105,7 +105,7 @@ export class Home extends Component {
                   <button type="button"  style={{backgroundColor:'steelblue'}} 
                   onClick={()=>{
                     this.props.history.push({
-                      pathname: '/TestSelection'
+                      pathname: '/Instructions'
                     })
                   }}
                   class="btn btn-primary" >Take Demo Test</button>
