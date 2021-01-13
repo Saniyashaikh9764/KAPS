@@ -61,68 +61,6 @@ const  questions = [
               c: "96",
               d: "70",
               answer: "C"
-            },{
-              id:7,
-                question: "What is 2 x 12?",
-                a: "88",
-                b: "24",
-                c: "96",
-                d: "70",
-                answer: "B"
-              },
-              {
-                id:8,
-                  question: "What is 2 x 12?",
-                  a: "88",
-                  b: "24",
-                  c: "96",
-                  d: "70",
-                  answer: "B"
-                },
-                {
-                  id:9,
-                    question: "What is 2 x 12?",
-                    a: "88",
-                    b: "24",
-                    c: "96",
-                    d: "70",
-                    answer: "B"
-                  },
-                  {
-                    id:10,
-                      question: "What is 2 x 12?",
-                      a: "88",
-                      b: "24",
-                      c: "96",
-                      d: "70",
-                      answer: "B"
-                    },
-                    {
-                      id:11,
-                        question: "What is 2 x 12?",
-                        a: "88",
-                        b: "24",
-                        c: "96",
-                        d: "70",
-                        answer: "B"
-                      },
-                      {
-                        id:12,
-                          question: "What is 2 x 12?",
-                          a: "88",
-                          b: "24",
-                          c: "96",
-                          d: "70",
-                          answer: "B"
-                        },
-                        {
-                          id:13,
-                            question: "What is 2 x 12?",
-                            a: "88",
-                            b: "24",
-                            c: "96",
-                            d: "70",
-                            answer: "C"
-                          },
+            }
     ];
     export default questions;

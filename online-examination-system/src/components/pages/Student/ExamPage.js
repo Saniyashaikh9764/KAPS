@@ -1,26 +1,52 @@
+import axios from 'axios'
 import React ,{ useState, useEffect }  from 'react'
-import {Route , BrowserRouter as Router, Switch} from 'react-router-dom'
+import {Route , BrowserRouter as Router, Switch, Redirect} from 'react-router-dom'
 
 import questions from '../../../Quiz'
 import QuestionBox from './QuestionBox'
 import QuestionButtons from './QuestionButtons'
 import Timer from './Timer'
 
-function ExamPage() {
+function ExamPage(props) {
+    
+    useEffect(()=>{
+        loadQuestions();
+     },[]);
 
-    const [questionsArr, setquestionsArr] = useState(questions)
+    const [questionsArr, setquestionsArr] = useState(questions)//;load questions here
     const [currQuestion,setCurrentQuestion]= useState(questions[0])
-    const [selectedAnsArr,setSelectedAnsArr]= useState([])
+    const [selectedAnsArr,setSelectedAnsArr]= useState(Array(questionsArr.length).fill(0))
 
+    
+    
+     const loadQuestions = async()=>{
+        //   alert('first')
+        let result1 = await axios.get('http://localhost:5000/id')
+        let id = result1.data[0].id;
+       // alert(JSON.stringify(result1.data[0].id) )
+        const result=await axios.get('http://localhost:5000/postSubjects/'+id);
+        setquestionsArr(result.data);
+        let i=0;
+        let cars = []
+        for (i = 0; i < result.data.length; i++) {
+         cars[i]=0 ;
+        }
+        setSelectedAnsArr(cars)
+       
+     }
+     
+    
     const collectAllAns =()=>{}
     //timer
     const time = new Date();
-    time.setSeconds(time.getSeconds() + 3600); // 10 minutes timer= 10*60=600
+    time.setSeconds(time.getSeconds() + 600); // 10 minutes timer= 10*60=600
+
+   
     return (
 
         <div className="greenShade">
             
-          
+            <Timer expiryTimestamp={time} />
              {/* Whole page */}
             <div className="container-fluid  examContainer " >
                 <div className="row">{/* All 3 boxes in a row */}
@@ -32,11 +58,11 @@ function ExamPage() {
                                     <div className="container">
                                         <div className="row my2">
                                             {
-                                                questions.map((quest)=>
+                                                questionsArr.map((quest)=>
                                                 ( 
                                                 <QuestionButtons
                                                     key ={quest.id}
-                                                  index={quest.id}
+                                                  index={quest.id-1}
                                                   setCurrentQuestion={setCurrentQuestion}
                                                   questionsArr={questionsArr}
                                                   //
@@ -49,15 +75,29 @@ function ExamPage() {
                         </div>
                     </div>
                     {/* question panel */}
-                    <div className="col-md-8">{/* Second box where question displayed */}
-                    <Timer expiryTimestamp={time} />
+                    <div className="col-md-8">
                    
-                        <QuestionBox currQuestion={currQuestion }
+                   
+                        <QuestionBox
+                        selectedAnsArr={selectedAnsArr}
+                        setSelectedAnsArr={setSelectedAnsArr}
+                        currQuestion={currQuestion }
                         questionsArr={questionsArr}
                         setCurrentQuestion={setCurrentQuestion}
                          /> 
                          <div style={{marginLeft:"25%"}}>
-                         <a  style={{borderRadius:"20px",padding:"10px 30px"}} className="btn btn-warning">Submit</a>  
+                         <a  style={{borderRadius:"20px",padding:"10px 30px"}} className="btn btn-warning" onClick={()=>{
+                             let i=0; let total =0;
+                             for(i;i<selectedAnsArr.length;i++)
+                             {
+                                total += selectedAnsArr[i]
+                             }
+                           
+                             props.history.push({
+                                pathname: '/results',
+                                state: { total: total }
+                              })
+                         }}>Submit</a>  
                          </div>          
                          
 

@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { Component } from 'react'
+import { Link, NavLink } from 'react-router-dom';
 
 export class Adm_Registration extends Component {
     constructor(props) {
@@ -9,8 +11,29 @@ export class Adm_Registration extends Component {
             number: '',
             password: '',
             confirm_password: '',
-            errormessage: ''
+            errormessage: '',
+            org: '',
+            nameOrg: ''
         };
+    }
+   
+    submithandler =  event => {  
+        event.preventDefault() 
+        const data2 = {
+            "Name" : this.state.name,
+            "Email" : this.state.email,
+            "Phone" : this.state.number,
+            "Password" : this.state.password,
+            "Org" : this.state.org,
+            "NameOrg" : this.state.nameOrg
+        }
+        
+         axios.post(`http://localhost:5000/adminModel`,data2).then(res => {
+         alert(JSON.stringify(res.data.message) )   
+        // console.log();
+            console.log(res.data);
+        })
+        
     }
 
     myChangeHandler = (event) => {
@@ -19,17 +42,17 @@ export class Adm_Registration extends Component {
         let err = '';
 
         if (nam === "name") {
-            if (val == "") {
+            if (val === "") {
                 err = '*Please Enter your name for registration!';
             }
         }  
         if (nam === 'email') {
-            if (val == "") {
+            if (val === "") {
                 err = '*Please Enter your e-mail for registration!';
             }
         }  
         if (nam === "number") {
-            if (val != "" && !Number(val)) {
+            if (val !== "" && !Number(val)) {
                 err = '*Please enter a valid number';
             }
         }
@@ -38,81 +61,81 @@ export class Adm_Registration extends Component {
         this.setState({ [nam]: val });
     }
  
-    
+
     render() {
         return (
-            <div class="container-fluid">
-                <div class="container">
-                    <div class="row mb-3">
-                        <div class="center">
-                            <div class="card">
-                                <div class="card-header" style={{ backgroundColor: 'lightblue' }}>
-                                    <h1 class="text-center" style={{paddingTop:'15px',textDecoration:'underline Grey'}}>Admin Registeration</h1>
+            <div className="container-fluid">
+                <div className="container">
+                    <div className="row mb-3">
+                        <div className="center">
+                            <div className="card">
+                                <div className="card-header" style={{ backgroundColor: 'lightblue' }}>
+                                    <h1 className="text-center" style={{paddingTop:'15px',textDecoration:'underline Grey'}}>Admin Registeration</h1>
                                     <hr />
                                 </div>
-                                <div class="card-body">
+                                <div className="card-body">
                                 <hr />
-                                    <div class="row">
-                                        <div class="col-md-7">
-                                            <form>
-                                                <div class="mb-3 row" style={{padding:'3px'}}>
-                                                    <div class="col-md-4">
+                                    <div className="row">
+                                        <div className="col-md-7">
+                                            <form onSubmit={this.submithandler}>
+                                                <div className="mb-3 row" style={{padding:'3px'}}>
+                                                    <div className="col-md-4">
                                                         <label for="name">Name</label>
                                                     </div>
-                                                    <div class="col-md-8">
-                                                        <input type="text" name="name" class="form-control" placeholder="Type your name here" onChange={this.myChangeHandler} required />
+                                                    <div className="col-md-8">
+                                                        <input type="text" name="name" value={this.state.name} className="form-control" placeholder="Type your name here" onChange={this.myChangeHandler} required />
 
                                                     </div>
                                                 </div>
 
-                                                <div class="mb-3 row" style={{padding:'3px'}}>
-                                                    <div class="col-md-4">
+                                                <div className="mb-3 row" style={{padding:'3px'}}>
+                                                    <div className="col-md-4">
                                                         <label for="email">E-mail</label>
                                                     </div>
-                                                    <div class="col-md-8">
-                                                        <input type="email" name="email" class="form-control" placeholder="Type your e-mail" onChange={this.myChangeHandler} required />
+                                                    <div className="col-md-8">
+                                                        <input type="email" name="email" value={this.state.email} className="form-control" placeholder="Type your e-mail" onChange={this.myChangeHandler} required />
 
                                                     </div>
                                                 </div>
 
-                                                <div class="mb-3 row" style={{padding:'3px'}}>
-                                                    <div class="col-md-4">
-                                                        <label for="number">Phone Number</label>
+                                                <div className="mb-3 row" style={{padding:'3px'}}>
+                                                    <div className="col-md-4">
+                                                        <label htmlFor="number">Phone Number</label>
                                                     </div>
-                                                    <div class="col-md-8">
-                                                        <input type="text" minLength='10' maxLength='10' name="number" class="form-control" placeholder="So we can reach you" onChange={this.myChangeHandler} required />
+                                                    <div className="col-md-8">
+                                                        <input type="text" minLength='10' value={this.state.number} maxLength='10' name="number" className="form-control" placeholder="So we can reach you" onChange={this.myChangeHandler} required />
 
                                                     </div>
                                                 </div>
 
-                                                <div class="mb-3 row" style={{padding:'3px'}}>
-                                                    <div class="col-md-4">
-                                                        <label for="password">Password</label>
+                                                <div className="mb-3 row" style={{padding:'3px'}}>
+                                                    <div className="col-md-4">
+                                                        <label htmlFor="password">Password</label>
                                                     </div>
-                                                    <div class="col-md-8">
-                                                        <input type="password" id="txtPassword" class="form-control password" placeholder="Enter password for your account." required />
+                                                    <div className="col-md-8">
+                                                        <input type="password" id="txtPassword" value={this.state.password} name="password" className="form-control password" placeholder="Enter password for your account." onChange={this.myChangeHandler} required />
 
                                                     </div>
                                                 </div>
 
-                                                <div class="mb-3 row" style={{padding:'3px'}}>
-                                                    <div class="col-md-4">
+                                                <div className="mb-3 row" style={{padding:'3px'}}>
+                                                    <div className="col-md-4">
                                                         <label for="confirm_password">Confirm Password</label>
                                                     </div>
-                                                    <div class="col-md-8">
-                                                        <input type="password" id="txtConfirmPassword" class="form-control confirmPassword" placeholder="re-Enter password for your account" required />
+                                                    <div className="col-md-8">
+                                                        <input type="password" id="txtConfirmPassword" value={this.state.confirm_password} name="confirm_password" className="form-control confirmPassword" placeholder="re-Enter password for your account" onChange={this.myChangeHandler} required />
                                                         <span id='errdisplay' style={{fontSize:'13px'}}></span>
 
                                                     </div>
                                                 </div>
 
-                                                <div class="mb-3 row" style={{padding:'3px'}}>
-                                                    <div class="col-md-4">
+                                                <div className="mb-3 row" style={{padding:'3px'}}>
+                                                    <div className="col-md-4">
                                                         <label for="organisation">Select Organisation</label>
                                                     </div>
-                                                    <div class="col-md-8">
-                                                        <select name='org1' required>
-                                                            <option value="" selected>Select your Sector</option>
+                                                    <div className="col-md-8">
+                                                        <select name='org' value={this.state.org} onChange={this.myChangeHandler} required>
+                                                            <option value="">Select your Sector</option>
                                                             <option value='scl'>School</option>
                                                             <option value='clg'>College</option>
                                                             <option value='corp'>Corporate</option>
@@ -120,24 +143,32 @@ export class Adm_Registration extends Component {
                                                     </div>
                                                 </div>
 
-                                                <div class="mb-3 row" style={{padding:'3px'}}>
-                                                    <div class="col-md-4">
-                                                        <label for="organisation_name">Name of the organisation</label>
+                                                <div className="mb-3 row" style={{padding:'3px'}}>
+                                                    <div className="col-md-4">
+                                                        <label for="nameOrg">Name of the organisation</label>
                                                     </div>
-                                                    <div class="col-md-8">
-                                                        <input type="text" name="organisation_name" class="form-control" placeholder="Name of your Orangisation" required/>
+                                                    <div className="col-md-8">
+                                                        <input type="text" value={this.state.nameOrg} onChange={this.myChangeHandler} name="nameOrg" className="form-control" placeholder="Name of your Orangisation" required/>
 
                                                     </div>
+                                                </div>
+
+                                                <div className="mb-3 row" style={{padding:'3px'}}>
+                                                    <div className="col-md-4">
+                                                    </div>
+                                                    <div className="col-md-8">
+                                                        <button className="btn btn-primary" type='submit' id='btnSubmit' onSubmit='addtodb()'>Register</button>
+                                                        {this.state.errormessage}
+                                                    </div> 
+                                                    
                                                 </div>
 
                                                 <div class="mb-3 row" style={{padding:'3px'}}>
                                                     <div class="col-md-4">
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <button class="btn btn-primary" type='submit' id='btnSubmit' >Register</button>
-                                                        {this.state.errormessage}
-                                                    </div> 
-                                                    
+                                                        <p style={{fontSize:"15px"}}>Already Have an account? <Link to='/admin-log' >Login Here</Link> </p>
+                                                 </div>
                                                 </div>
                                             </form>
                                         </div>

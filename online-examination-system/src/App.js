@@ -21,6 +21,7 @@ import UserMgt from './components/pages/Admin/UserMgt';
 import QuestionEdit from './components/pages/Admin/QuestionEdit';
 import AddSubjects from './components/pages/Admin/AddSubjects';
 import DisplayQuestions from './components/pages/Admin/DisplayQuestions';
+import Results from './components/pages/Student/Results';
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
         <Route path='/student-register' component={Stud_Registration}></Route>
         <Route path="/TestSelection" component={TestSelection}></Route>
         <Route path="/Instructions" component={Instructions}></Route>
-        <Route path="/ExamPage" component={ExamPage}></Route> 
+        <Route path="/ExamPage" component={ExamPage}></Route>
         <Route exact path="/AdminMain" component={AdminMain}></Route>
 
         <Route exact path='/AdminMain/usermgt'  component={UserMgt}></Route>
@@ -48,6 +49,7 @@ function App() {
           </Route>
           <Route exact path="/AdminMain/addsubjects" component={AddSubjects}></Route>
           <Route exact path="/AdminMain/displayquestions" component={DisplayQuestions}></Route>
+          <Route exact path="/results" component={Results}/>
 
         <Route component={Notfound} />
         </Switch>

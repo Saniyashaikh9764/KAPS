@@ -10,7 +10,9 @@ function QuestionButtons({index,setCurrentQuestion,questionsArr}) {
     return (
         <div className="col-sm-3 " >
             <button onClick={clickHandler}type="button" className="btn btn-secondary my-2" 
-            value ={index}  >{index+1}</button>
+            value ={index}  >
+                
+            {index+1}</button>
         </div>
         
     )

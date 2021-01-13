@@ -57,12 +57,12 @@ function AddSubjects() {
                     <form id="q-form" action="#" onSubmit={AddSubjectHandler}>
                         <div class="mb-3">
                           <label for="Subject" class="form-label">Subject Name</label>
-                          <input onChange={e=>ChangeHandler(e)} type="text" name="Name" value={Name} class="form-control" id="Subject" />
+                          <input required onChange={e=>ChangeHandler(e)} type="text" name="Name" value={Name} class="form-control" id="Subject" />
                           <div id="Subject" class="form-text">create a suitable Subject.</div>
                         </div>
                         <div class="mb-3">
                           <label for="sDesc" class="form-label">Subject Description</label>
-                          <textarea onChange={e=>ChangeHandler(e)} name="Description" value={ Description} type="text" class="form-control" id="sDesc"></textarea>
+                          <textarea required onChange={e=>ChangeHandler(e)} name="Description" value={ Description} type="text" class="form-control" id="sDesc"></textarea>
                         </div>
 
                       </form>
@@ -79,11 +79,11 @@ function AddSubjects() {
             <div className="row">
                {
                    subjects.map((sub,index)=>(
-                    <div className="col-md-3">
+                    <div className="col-md-3" style={{paddingBottom:'20px'}}>
                     <div className="card " style={{border:"2px solid blue",borderRadius:"20px"}}>
                     <div className="card-body">
                         
-                        <h4 className="card-title">{sub.Name}</h4><hr></hr>
+                        <h4 className="card-title">{sub.Name}</h4>
                         <div className="card-text text-muted"> {sub.Description}</div>
                     </div>
                     </div>   

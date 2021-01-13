@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 
@@ -10,6 +11,35 @@ export class Stud_login extends Component {
             errormessage: ''
         };
     }
+    
+    submithandler =  event => {  
+        event.preventDefault()
+      const data2 = {
+          "Email" : this.state.email,  
+          "Password" : this.state.password 
+      }
+      // alert('hi');
+    //    alert(JSON.stringify(data2))
+      
+       axios.post(`http://localhost:5000/studentModel/login`,data2).then(res => {
+      //  alert(JSON.stringify(res.data) )   
+      // console.log();
+          console.log(res.data);
+          if(res.data.message ==="Invalid Email or Password!")
+          {
+              alert(res.data.message)
+          }
+          else{
+              alert("logged in sucessfully")
+              this.props.history.push({
+                  pathname: '/TestSelection'
+                  
+                })
+          }
+          
+      })
+      
+  }
     myChangeHandler = (event) => {
         let nam = event.target.name;
         let val = event.target.value;
@@ -40,7 +70,7 @@ export class Stud_login extends Component {
                                 <hr />
                                     <div class="row">
                                         <div class="col-md-7">
-                                            <form>
+                                            <form onSubmit={this.submithandler}>
                                                 <div class="mb-3 row" style={{padding:'3px'}}>
                                                     <div class="col-md-4">
                                                         <label for="email">Enter Email</label>
@@ -56,7 +86,7 @@ export class Stud_login extends Component {
                                                         <label for="password">Password</label>
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <input type="password" name="password" class="form-control" placeholder="Enter Password" required />
+                                                        <input onChange={this.myChangeHandler} type="password" name="password" class="form-control" placeholder="Enter Password" required />
 
                                                     </div>
                                                 </div>
@@ -65,9 +95,7 @@ export class Stud_login extends Component {
                                                     <div class="col-md-4">
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <NavLink to="/TestSelection">
-                                                        <button  class="btn btn-primary">Login</button>
-                                                        </NavLink>
+                                                    <button className="btn btn-primary" type="submit" >login</button>
                                                     </div>
                                                 </div>
 
