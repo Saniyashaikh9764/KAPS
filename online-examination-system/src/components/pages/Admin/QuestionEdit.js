@@ -156,10 +156,10 @@ function QuestionEdit() {
                {
                    subjects.map((sub,index)=>(
                     <div className="col-md-3 "style={{paddingBottom:'20px'}}>
-                    <div className="card " style={{border:"2px solid blue",borderRadius:"20px"}}>
+                    <div className="card h-100" style={{border:"2px solid blue",borderRadius:"20px"}}>
                     <div className="card-body">
                         
-                        <h4 className="card-title">{sub.Name}</h4>
+                        <h4 className="card-title">{sub.Name}</h4><hr></hr>
                         <div className="card-text text-muted"> {sub.Description}</div>
                         <div className="container-qadder">
                         <button type="button" onClick={()=>{takeSubId(sub._id)}} className="btn btn-primary qadder" data-bs-toggle="modal" data-bs-target="#add_question"
