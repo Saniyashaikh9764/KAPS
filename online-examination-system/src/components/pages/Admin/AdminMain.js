@@ -18,9 +18,7 @@ function AdminMain() {
                      <li className="nav-item adm-li">
                         <NavLink  to="/AdminMain/addsubjects" className="nav-link adm-a">Add Subjects</NavLink>    
                      </li>
-                     <li className="nav-item adm-li">
-                        <NavLink  to="/AdminMain/displayquestions" className="nav-link adm-a">display questions</NavLink>    
-                     </li>
+                    
                      <li className="nav-item adm-li">
                          <button  type="button" class="btn btn-dark" style={{marginTop:"5px",marginLeft:'50px'}}>
                         <NavLink  to="/" className="nav-link adm-a">Log Out</NavLink>  

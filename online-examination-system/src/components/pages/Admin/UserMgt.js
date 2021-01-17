@@ -17,7 +17,7 @@ function UserMgt() {
 
    
     
-
+//reading data
     useEffect(() => {
         loadusers();
     }, []);
@@ -55,7 +55,7 @@ function UserMgt() {
         //const result = await axios.put('http://localhost:5000/getUserMgnt/' + id);
         setUser(result.data);
     };
-
+//deleting data
 const deleteUser= async id=>{
     alert('deleting :'+id);
     const result = await axios.delete(`http://localhost:5000/studentModel/${id}`);

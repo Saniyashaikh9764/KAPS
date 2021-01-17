@@ -16,7 +16,7 @@ export class Adm_Registration extends Component {
             nameOrg: ''
         };
     }
-   
+   //Registration of details
     submithandler = async event => {  
         event.preventDefault() 
         const data2 = {
@@ -30,12 +30,12 @@ export class Adm_Registration extends Component {
         
         await axios.post(`http://localhost:5000/adminModel`,data2).then(res => {
          alert(JSON.stringify(res.data.message) )   
-        // console.log();
+    
             console.log(res.data);
         })
         
     }
-
+    //Form Validations
     myChangeHandler = (event) => {
         let nam = event.target.name;
         let val = event.target.value;
@@ -83,7 +83,10 @@ export class Adm_Registration extends Component {
                                                         <label for="name">Name</label>
                                                     </div>
                                                     <div className="col-md-8">
-                                                        <input type="text" name="name" value={this.state.name} className="form-control" placeholder="Type your name here" onChange={this.myChangeHandler} required />
+                                                        <input type="text" name="name" 
+                                                        value={this.state.name} className="form-control" 
+                                                        placeholder="Type your name here" 
+                                                        onChange={this.myChangeHandler} required />
                                                     
                                                     </div>
                                                 </div>
@@ -93,7 +96,10 @@ export class Adm_Registration extends Component {
                                                         <label for="email">E-mail</label>
                                                     </div>
                                                     <div className="col-md-8">
-                                                        <input type="email" name="email" value={this.state.email} className="form-control" placeholder="Type your e-mail" onChange={this.myChangeHandler} required />
+                                                        <input type="email" name="email" 
+                                                        value={this.state.email} className="form-control"
+                                                         placeholder="Type your e-mail"
+                                                          onChange={this.myChangeHandler} required />
 
                                                     </div>
                                                 </div>
@@ -103,7 +109,12 @@ export class Adm_Registration extends Component {
                                                         <label htmlFor="number">Phone Number</label>
                                                     </div>
                                                     <div className="col-md-8">
-                                                        <input type="text" minLength='10' value={this.state.number} maxLength='10' name="number" className="form-control" placeholder="So we can reach you" onChange={this.myChangeHandler} required />
+                                                        <input type="text" 
+                                                        minLength='10' value={this.state.number}
+                                                         maxLength='10' name="number" 
+                                                         className="form-control" 
+                                                         placeholder="So we can reach you" 
+                                                         onChange={this.myChangeHandler} required />
 
                                                     </div>
                                                 </div>
@@ -113,7 +124,12 @@ export class Adm_Registration extends Component {
                                                         <label htmlFor="password">Password</label>
                                                     </div>
                                                     <div className="col-md-8">
-                                                        <input type="password" id="txtPassword" value={this.state.password} name="password" className="form-control password" placeholder="Enter password for your account." onChange={this.myChangeHandler} required />
+                                                        <input type="password"
+                                                         id="txtPassword" 
+                                                         value={this.state.password} name="password"
+                                                          className="form-control password" 
+                                                          placeholder="Enter password for your account." 
+                                                          onChange={this.myChangeHandler} required />
 
                                                     </div>
                                                 </div>
@@ -123,7 +139,11 @@ export class Adm_Registration extends Component {
                                                         <label for="confirm_password">Confirm Password</label>
                                                     </div>
                                                     <div className="col-md-8">
-                                                        <input type="password" id="txtConfirmPassword" value={this.state.confirm_password} name="confirm_password" className="form-control confirmPassword" placeholder="re-Enter password for your account" onChange={this.myChangeHandler} required />
+                                                        <input type="password" id="txtConfirmPassword" 
+                                                        value={this.state.confirm_password} name="confirm_password"
+                                                         className="form-control confirmPassword" 
+                                                         placeholder="re-Enter password for your account"
+                                                          onChange={this.myChangeHandler} required />
                                                         <span id='errdisplay' style={{fontSize:'13px'}}></span>
 
                                                     </div>
@@ -148,7 +168,11 @@ export class Adm_Registration extends Component {
                                                         <label for="nameOrg">Name of the organisation</label>
                                                     </div>
                                                     <div className="col-md-8">
-                                                        <input type="text" value={this.state.nameOrg} onChange={this.myChangeHandler} name="nameOrg" className="form-control" placeholder="Name of your Orangisation" required/>
+                                                        <input type="text"
+                                                         value={this.state.nameOrg}
+                                                          onChange={this.myChangeHandler} name="nameOrg" 
+                                                          className="form-control"
+                                                           placeholder="Name of your Orangisation" required/>
 
                                                     </div>
                                                 </div>
@@ -157,7 +181,9 @@ export class Adm_Registration extends Component {
                                                     <div className="col-md-4">
                                                     </div>
                                                     <div className="col-md-8">
-                                                        <button className="btn btn-primary" type='submit' id='btnSubmit' onSubmit='addtodb()'>Register</button>
+                                                        <button className="btn btn-primary"
+                                                         type='submit' id='btnSubmit'
+                                                          onSubmit='addtodb()'>Register</button>
                                                        
                                                     </div> 
                                                     
@@ -167,7 +193,9 @@ export class Adm_Registration extends Component {
                                                     <div class="col-md-4">
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <p style={{fontSize:"15px"}}>Already Have an account? <Link to='/admin-log' >Login Here</Link> </p>
+                                                        <p style={{fontSize:"15px"}}>
+                                                            Already Have an account? <Link to='/admin-log' >Login Here</Link>
+                                                         </p>
                                                  </div>
                                                 </div>
                                             </form>
